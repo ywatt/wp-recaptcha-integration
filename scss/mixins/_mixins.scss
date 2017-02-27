@@ -1,0 +1,14 @@
+@mixin dashicon( $icon: 0 ) {
+	@if ( $icon != 0 ) {
+		content: $icon;
+	}
+	display: inline-block;
+	line-height: 1;
+	font-family: dashicons;
+	text-decoration: inherit;
+	font-weight: normal;
+	font-style: normal;
+	vertical-align: top;
+	text-align: center;
+
+}

@@ -1,0 +1,32 @@
+WP Recaptcha Integration ToDO
+=============================
+
+ - [ ] Core
+ 	- [ ] Uninstall > delete options
+ 	- [ ] Form options implementation
+ - [ ] Integrations
+	- [ ] WP
+		- [ ] Login
+			- [ ] Option: prevent lockout
+		- [ ] Comment Form
+	- [ ] WPMU
+	- [ ] BBPress
+	- [ ] BuddyPress
+	- [ ] CF7
+	- [ ] Ninja Forms
+	- [ ] WC
+		- [ ] Login form
+		- [ ] Signup form
+		- [ ] PW Lost
+		- [ ] Checkout
+	- [ ] AwesomeSupport
+ - [ ] Captchas
+ 	- [ ] gRecaptcha
+ 		- [x] Language
+ 		- [ ] Implement disable submit button
+ 		- [ ] Size: invisible (enoying JS problems)
+ - [ ] Settings
+	- [x] Form-Settings
+	- [ ] API-Key
+		- [ ] Style
+		- [ ] Ajax Test keys

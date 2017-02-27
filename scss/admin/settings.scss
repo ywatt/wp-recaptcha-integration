@@ -1,0 +1,220 @@
+@import '../variables/variables';
+
+@import '../mixins/mixins';
+
+
+.settings_page_recaptcha {
+
+	.nav-tab-content {
+		display:none;
+		&.active {
+			display:block;
+		}
+	}
+
+	.form-table {
+		th[scope="row"] {
+			display:none;
+		}
+		td {
+			padding-left:0;
+		}
+	}
+}
+#recaptcha-integration {
+	td > input[type="checkbox"] {
+		display:none;
+		& + label {
+			display:block;
+			padding:10px 15px;
+			font-size:1.25em;
+			background:#e5e5e5;
+			color:#555;
+			border-radius:5px;
+			&:before {
+				@include dashicon( $dashicon-unlock );
+    		}
+		}
+		& ~ .form-settings {
+		 	display:none;
+		 	padding:15px;
+			border-radius:5px;
+		}
+		&:checked {
+			 & + label,
+			 & ~ .form-settings {
+			 	display:block;
+			 	border:1px solid #ccc;
+			 	background-color:#fff;
+			 	color:#333;
+			 }
+			 & + label {
+			 	color:$wp-blue;
+			 	border-bottom-style:none;
+				border-radius:5px 5px 0 0;
+				&:before {
+					content:$dashicon-lock;
+				}
+			 }
+			 & ~ .form-settings {
+			 	border-top-style:none;
+				border-radius:0 0 5px 5px;
+			 }
+		}
+	}
+	.captcha-settings {
+		border-top:1px solid #efefef;
+	}
+	.captcha-setting-theme,
+	.captcha-setting-size {
+		border-right:1px solid #efefef;
+	}
+
+	.captcha-setting-type,
+	.captcha-setting-theme,
+	.captcha-setting-size {
+//		width:percentage( 1/3 );
+		float:left;
+		padding-right:20px;
+		margin-right:20px;
+		padding-bottom:20px;
+		label {
+			text-align:center;
+			font-weight:bold;
+		}
+		.label {
+			color:#999;
+			margin:10px;
+			text-align:center;
+		}
+		[type="radio"] {
+			display:none;
+			text-align:center;
+			& + label {
+				display:inline-block;
+				width:60px;
+				height:80px;
+				border:1px solid #ccc;
+				color:#999;
+				padding:10px;
+				border-radius:3px;
+				&:before {
+					color:inherit;
+				}
+			}
+			&:checked + label {
+				color:#fff;
+				background-color:$wp-blue;
+				border-color:$wp-blue;
+			}
+			// types
+			&[value="image"] + label:before,
+			&[value="audio"] + label:before {
+				@include dashicon( );
+				display:block;
+				font-size:40px;
+				padding:10px;
+			}
+			&[value="image"] + label:before {
+				content:$dashicon-format-image;
+			}
+			&[value="audio"] + label:before {
+				content:$dashicon-format-audio;
+			}
+
+			// themes
+			&[value="light"] + label:before,
+			&[value="dark"] + label:before {
+				content:'I’m not a Robot';
+				font-weight:normal;
+				display:inline-block;
+				font-size:10px;
+				width:40px;
+				height:40px;
+				margin-bottom:5px;
+				border-radius:3px;
+				overflow:hidden;
+				padding:5px;
+				box-shadow:0px 0px 4px 1px rgba(0,0,0,0.08);
+				text-align:left;
+			}
+
+			&[value="light"] + label:before {
+				background:#f9f9f9;
+				border:1px solid #d3d3d3;
+				color:#000;
+			}
+			&[value="dark"] + label:before {
+				background:#222;
+				border:1px solid #525252;
+				color:#fff;
+			}
+			// sizes
+			&[value="normal"] + label:before,
+			&[value="compact"] + label:before,
+			&[value="invisible"] + label:before {
+				content:'';
+				display:inline-block;
+				font-size:30px;
+// 				width:40px;
+// 				height:40px;
+				border-radius:3px;
+				overflow:hidden;
+//				padding:5px;
+				border-color:#999;
+				border-style:solid;
+				box-sizing:content-box;
+			}
+			&[value="normal"]:checked + label:before,
+			&[value="compact"]:checked + label:before,
+			&[value="invisible"]:checked + label:before {
+				border-color:#fff;
+			}
+			&[value="normal"] + label:before {
+				// 302*76
+				$wd: 60px;
+				$hg: 60px * ( 76 / 302 );
+				$cb: 6px;
+				width:$cb;
+				height:$cb;
+				margin-top: ( 60px - $hg ) / 2;
+				margin-bottom: ( 60px - $hg ) / 2;
+
+				border-top-width: ( $hg - $cb ) / 2;
+				border-bottom-width: ( $hg - $cb ) / 2;
+				border-right-width: $wd - $cb - 3px;
+				border-left-width: 3px;
+
+			}
+			&[value="compact"] + label:before {
+				// 158*138
+				$wd: 60px * ( 158 / 302 );
+				$hg: 60px * ( 138 / 302 );
+				$cb: 6px;
+				width:$cb;
+				height:$cb;
+				margin-top: ( 60px - $hg ) / 2;
+				margin-bottom: ( 60px - $hg ) / 2;
+
+				border-top-width: 6px;
+				border-bottom-width: $hg - $cb - 6px;
+				border-right-width: $wd - $cb - 3px;
+				border-left-width: 3px;
+			}
+			&[value="invisible"] + label:before {
+				width:30px;
+				height:30px;
+				margin-top:10px;
+				margin-bottom:15px;
+				border-width:2px;
+				border-style:dashed;
+			}
+		}
+	}
+	.captcha-setting-disable_submit {
+		clear:left;
+		padding-top:10px;
+		margin-top:10px;
+		border-top:1px solid #efefef;
+	}
+}
